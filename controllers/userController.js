@@ -25,6 +25,18 @@ const getUserById = async (req, res) => {
     }
 }
 
+const getUser = async (req, res) => {
+    try {
+        const user = await userModel.find();
+        if (!user) {
+            return res.status(404).send();
+        }
+        res.send(user);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
 const updateUser = async (req, res) => {
 
     try {
@@ -103,6 +115,7 @@ const getAnalyticsByTopActive = async (req, res) => {
 }
 module.exports = {
     getUserById,
+    getUser,
     postUser,
     updateUser,
     deleteUser,

@@ -4,6 +4,7 @@ const postController = require("../controllers/postController")
 
 router.post("/posts", postController.postPosts)
 router.get("/posts/:id", postController.getPostById)
+router.get("/getposts", postController.getPost)
 router.put("/posts/:id", postController.updatePosts)
 router.delete("/posts/:id", postController.deletePosts)
 router.post("/posts/:id/like", postController.postLike)

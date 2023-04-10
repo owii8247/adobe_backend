@@ -22,6 +22,18 @@ const getPostById = async (req, res) => {
     }
 }
 
+const getPost = async (req, res) => {
+    try {
+        const posts = await postModel.find();
+        if (!posts) {
+            return res.status(404).send();
+        }
+        res.send(posts);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
 const updatePosts = async (req, res) => {
     try {
         const posts = await postModel.findByIdAndUpdate(req.params.id, req.body, {
@@ -108,6 +120,7 @@ const getTopPostByLike = async (req, res) => {
 
 module.exports = {
     getPostById,
+    getPost,
     postPosts,
     updatePosts,
     deletePosts,
