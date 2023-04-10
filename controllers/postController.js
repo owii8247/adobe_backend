@@ -67,7 +67,7 @@ const deletePosts = async (req, res) => {
 const postLike = async (req, res) => {
     try {
         const posts = await postModel.findByIdAndUpdate(
-            req.params._id,
+            req.params.id,
             { $inc: { likes: 1 } },
             { new: true }
         );
@@ -85,7 +85,7 @@ const postLike = async (req, res) => {
 const postUnlike = async (req, res) => {
     try {
         const posts = await postModel.findByIdAndUpdate(
-            req.params._id,
+            req.params.id,
             { $inc: { likes: -1 } },
             { new: true }
         );
